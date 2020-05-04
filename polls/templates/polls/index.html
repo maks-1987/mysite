@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+{% if latest_question_list %}
+    <ul>
+        {% for question in latest_question_list %}
+{#            так как мы указали названия при вызове path() в модуле polls.urls, мы можем ссылаться на шаблоны URL-ов используя шаблонный тег {% url %} #}
+            <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Нет доступных голосований.</p>
+{% endif %}
+</body>
+</html>
